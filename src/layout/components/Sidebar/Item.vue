@@ -1,12 +1,9 @@
-<template>
-  <el-menu-item>
-    <svg-icon v-if="icon" :icon-name="icon" />
-    <span v-if="title" slot="title">{{title}}</span>
-  </el-menu-item>
-</template>
+
 
 <script>
 export default {
+  name: "MenuItem",
+  functional: true,
   props: {
     title: {
       type: String,
@@ -16,9 +13,18 @@ export default {
       type: String,
       default: ''
     }
+  },
+  //用 template 的话会多一层 div 
+  render(h,context) {
+    const { icon,title }=context.props
+    const vNode=[]
+    if(icon) {
+      vNode.push(<svg-icon icon-name={icon} />)
+    }
+    if(title) {
+      vNode.push(<span slot='title' >{(title)}</span>) //多看两遍
+    }
+    return vNode
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
