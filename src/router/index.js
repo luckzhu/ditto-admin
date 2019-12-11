@@ -9,7 +9,7 @@ const constantRoutes = [
     path: "/",
     component: Layout,
     redirect: "/home",
-    meta: { title: "管理台", icon: "all" },
+    meta: { title: "管理", icon: "all" },
     children: [
       {
         path: "home",

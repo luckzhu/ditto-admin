@@ -4,14 +4,11 @@
       <template slot="title">
         <item :icon="item.meta.icon" :title="item.meta.title"></item>
       </template>
-      <item
-        v-for="child in item.children"
-        :key="child.path"
-        :icon="child.meta.icon"
-        :title="child.meta.title"
-      ></item>
+      <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
+        <item :icon="child.meta.icon" :title="child.meta.title"></item>
+      </el-menu-item>
     </el-submenu>
-    <el-menu-item v-else index="item.path">
+    <el-menu-item v-else :index="item.path">
       <item :icon="item.meta.icon" :title="item.meta.title"></item>
     </el-menu-item>
   </div>

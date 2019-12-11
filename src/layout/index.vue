@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="220px">
+      <el-aside width="200px">
         <sidebar />
       </el-aside>
       <el-container>

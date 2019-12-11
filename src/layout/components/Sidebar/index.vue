@@ -5,11 +5,10 @@
       class="el-menu-demo"
       mode="vertical"
       :collapse="isCollapse"
+      router
       @select="handleSelect"
     >
-      <sidebar-item v-for="route in router" :key="route.path" :item="route">
-        <sidebar-item v-for="child in route.children" :key="child.path" :item="child"></sidebar-item>
-      </sidebar-item>
+      <sidebar-item v-for="route in router" :key="route.path" :item="route"></sidebar-item>
     </el-menu>
     <div class="line"></div>
   </div>
@@ -43,11 +42,13 @@ export default {
 }
 </script>
 
-<style lang="scss" >
-.sidebar .svg-icon {
+<style lang="scss"  >
+.sidebar {
+  text-align: left;
+}
+.sidebar .el-menu .svg-icon {
   margin-right: 10px;
   font-size: 20px;
   vertical-align: middle;
 }
-
 </style>
