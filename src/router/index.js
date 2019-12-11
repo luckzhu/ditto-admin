@@ -39,6 +39,35 @@ const constantRoutes = [
   }
 ];
 
+const ansycRoutes = [
+  {
+    path: "/test",
+    component: Layout,
+    redirect: "/normal",
+    meta: { title: "测试", icon: "arrow-right", roles: ["admin", "editor"] },
+    children: [
+      {
+        path: "normal",
+        name: "Normal",
+        component: () => import("@/views/About.vue"),
+        meta: { title: "normal", icon: "arrow-up" }
+      },
+      {
+        path: "admin",
+        name: "Admin",
+        component: () => import("@/views/About.vue"),
+        meta: { title: "admin", icon: "assessed-badge", roles: ["admin"] }
+      },
+      {
+        path: "editor",
+        name: "Editor",
+        component: () => import("@/views/About.vue"),
+        meta: { title: "editor", icon: "bad", roles: ["editor"] }
+      }
+    ]
+  }
+];
+
 const router = new VueRouter({
   routes: constantRoutes
 });
