@@ -6,6 +6,12 @@ Vue.use(VueRouter);
 
 const constantRoutes = [
   {
+    path: "/login",
+    name: "Login",
+    component: () => import("@/views/login"),
+    hidden: true
+  },
+  {
     path: "/",
     component: Layout,
     redirect: "/home",

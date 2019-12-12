@@ -13,6 +13,9 @@ import router from "./router";
 import store from "./store";
 
 import "./icons";
+// import "./mock";
+import { mockXHR } from "./mock";
+mockXHR();
 
 Vue.config.productionTip = false;
 

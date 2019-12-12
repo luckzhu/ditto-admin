@@ -45,15 +45,11 @@ service.interceptors.response.use(
       // 50008: 不合法 token; 50012: 其它客户端登录; 50014: token 过期;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // 重新登录
-        MessageBox.confirm(
-          "您已经退出登录了，您可以取消继续留在本页面，或者重新登录",
-          "登出确认",
-          {
-            confirmButtonText: "重新登录",
-            cancelButtonText: "取消",
-            type: "warning"
-          }
-        ).then(() => {
+        MessageBox.confirm("您已经退出登录了，您可以取消继续留在本页面，或者重新登录", "登出确认", {
+          confirmButtonText: "重新登录",
+          cancelButtonText: "取消",
+          type: "warning"
+        }).then(() => {
           // store.dispatch('user/resetToken').then(() => {
           //   location.reload();
           // });
