@@ -11,8 +11,8 @@
       <el-form-item label="用户名" prop="username">
         <el-input v-model="loginForm.username" autocomplete="on"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pass">
-        <el-input v-model="loginForm.pass" type="password" autocomplete="off"></el-input>
+      <el-form-item label="密码" prop="password">
+        <el-input v-model="loginForm.password" type="passwordword" autocomplete="off"></el-input>
       </el-form-item>
 
       <el-button type="primary" @click="submitForm('loginForm')">提交</el-button>
@@ -22,16 +22,15 @@
 </template>
 
 <script>
-import { login, getInfo } from '@/api/user.js'
 export default {
   data() {
     return {
       loginForm: {
-        username: '',
-        pass: ''
+        username: 'admin',
+        password: '123'
       },
       rules: {
-        pass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
         username: [{ required: true, message: '请输入用户名', trigger: 'blur' }]
       }
     }
@@ -40,17 +39,12 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          const { username, pass } = this.loginForm
-          login({ username, pass }).then(res => {
-            const { token } = res.data
-            console.log(token)
-            
-            getInfo(token).then(data => {
-              console.log(data)
-              
+          const { username, password } = this.loginForm
+          this.$store
+            .dispatch('user/login', { username, password })
+            .then(() => {
+              this.$router.push('/')
             })
-            // this.$router.push('/')
-          })
         } else {
           console.log('error submit!!')
           return false

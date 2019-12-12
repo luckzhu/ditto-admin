@@ -4,7 +4,7 @@ import Layout from "@/layout/index.vue";
 
 Vue.use(VueRouter);
 
-const constantRoutes = [
+export const constantRoutes = [
   {
     path: "/login",
     name: "Login",
@@ -45,7 +45,7 @@ const constantRoutes = [
   }
 ];
 
-const ansycRoutes = [
+export const asyncRoutes = [
   {
     path: "/test",
     component: Layout,

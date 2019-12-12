@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import SidebarItem from "./SidebarItem"
+import SidebarItem from './SidebarItem'
 export default {
   components: {
     SidebarItem
   },
   data() {
     return {
-      activeIndex: "1"
+      activeIndex: '1'
     }
   },
   computed: {
@@ -30,13 +30,13 @@ export default {
       return false
     },
     router() {
-      console.log(this.$router.options.routes)
-      return this.$router.options.routes
+      console.log(this.$store.getters.permission_routes)
+      return this.$store.getters.permission_routes
     }
   },
   methods: {
-    handleSelect(key,keyPath) {
-      console.log(key,keyPath);
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath)
     }
   }
 }

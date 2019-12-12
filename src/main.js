@@ -12,6 +12,8 @@ Vue.use(ElementUI);
 import router from "./router";
 import store from "./store";
 
+import "./permission";
+
 import "./icons";
 // import "./mock";
 import { mockXHR } from "./mock";
