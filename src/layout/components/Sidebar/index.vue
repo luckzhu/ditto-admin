@@ -10,7 +10,6 @@
     >
       <sidebar-item v-for="route in router" :key="route.path" :item="route"></sidebar-item>
     </el-menu>
- 
   </div>
 </template>
 
@@ -27,7 +26,7 @@ export default {
   },
   computed: {
     isCollapse() {
-      return false
+      return !this.$store.getters.sidebar.opened
     },
     router() {
       return this.$store.getters.permission_routes

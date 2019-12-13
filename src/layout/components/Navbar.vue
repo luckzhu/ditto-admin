@@ -1,5 +1,8 @@
 <template>
   <div class="navbar-container">
+    <div class="trigger-container" @click="toggleSidebar">
+      <svg-icon :icon-name="triggerIconName" icon-class="trigger-icon" />
+    </div>
     <div class="right-menu">
       <!-- <p class="name">{{name}}</p> -->
       <img :src="avatar" class="avatar" alt />
@@ -24,9 +27,20 @@
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters(['name', 'avatar'])
+    ...mapGetters(['name', 'avatar', 'sidebar']),
+    triggerIconName() {
+      if (this.sidebar.opened) {
+        return 'double-arrow-left'
+      } else {
+        return 'double-arrow-right'
+      }
+    }
   },
   methods: {
+    toggleSidebar() {
+      console.log(1)
+      this.$store.commit('app/TOGGLE_SIDEBAR')
+    },
     onLogout() {
       this.$store.dispatch('user/logout').then(() => {
         this.$router.push('/login')
@@ -39,10 +53,19 @@ export default {
 <style lang="scss" scoped>
 .navbar-container {
   height: 64px;
-  padding: 0 20px;
+  padding: 0 20px 0 15px;
   overflow: hidden;
   position: relative;
   border-bottom: 1px solid #dcdfe6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.trigger-container {
+  .trigger-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
 .right-menu {
   height: 100%;

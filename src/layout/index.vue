@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-container">
+  <div :class="classObj">
     <sidebar class="sidebar-container" />
     <div class="right-container">
       <navbar />
@@ -15,6 +15,14 @@ export default {
     Sidebar,
     AppMain,
     Navbar
+  },
+  computed: {
+    classObj() {
+      return {
+        'layout-ontainer': true,
+        'hide-sidebar': !this.$store.getters.sidebar.opened
+      }
+    }
   }
 }
 </script>
@@ -35,5 +43,26 @@ export default {
   left: 0;
   overflow: hidden;
   outline: 1px solid #dcdfe6;
+}
+
+.hide-sidebar {
+  .sidebar-container {
+    width: 50px;
+  }
+  .right-container {
+    margin-left: 50px;
+  }
+}
+.el-icon-arrow-right {
+  display: none;
+}
+.el-menu--vertical {
+  .el-menu-item {
+    .svg-icon {
+      margin-right: 10px;
+      font-size: 20px;
+      vertical-align: middle;
+    }
+  }
 }
 </style>
