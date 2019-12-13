@@ -12,6 +12,18 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: "/404",
+    name: "404",
+    component: () => import("@/views/error-page/404"),
+    hidden: true
+  },
+  {
+    path: "/401",
+    name: "401",
+    component: () => import("@/views/error-page/401"),
+    hidden: true
+  },
+  {
     path: "/",
     component: Layout,
     redirect: "/home",
@@ -71,7 +83,9 @@ export const asyncRoutes = [
         meta: { title: "editor", icon: "bad", roles: ["editor"] }
       }
     ]
-  }
+  },
+  // 404 页面一定放在最后！
+  { path: "*", redirect: "/404", hidden: true }
 ];
 
 const createRouter = () =>
@@ -83,10 +97,8 @@ const router = createRouter();
 
 //当切换用户登录时，需要重置上一次动态加载的路由。用户logout时调用即可
 export function resetRouter(routes) {
-  console.log(router);
   const newRouter = createRouter();
   router.matcher = newRouter.matcher;
-  console.log(router);
 }
 
 export default router;

@@ -30,13 +30,11 @@ export default {
       return false
     },
     router() {
-      console.log(this.$store.getters.permission_routes)
       return this.$store.getters.permission_routes
     }
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath)
     }
   }
 }

@@ -15,13 +15,11 @@ router.beforeEach(async (to, from, next) => {
   const hasToken = getToken();
 
   if (hasToken) {
-    console.log({ hasToken });
     if (to.path === "/login") {
       next("/");
       NProgress.done();
     } else {
       const hasRoles = store.getters.roles && store.getters.roles.length > 0;
-      console.log({ hasRoles });
       if (hasRoles) {
         next();
       } else {
