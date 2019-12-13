@@ -43,7 +43,7 @@ export default {
           this.$store
             .dispatch('user/login', { username, password })
             .then(() => {
-              this.$router.push('/')
+              this.$router.push({ path: this.$route.query.redirect || '/' }) //预先重定向到之前的页面
             })
         } else {
           console.log('error submit!!')
