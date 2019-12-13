@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     toggleSidebar() {
-      console.log(1)
       this.$store.commit('app/TOGGLE_SIDEBAR')
     },
     onLogout() {
