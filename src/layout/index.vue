@@ -1,25 +1,15 @@
 <template>
-  <div>
-    <el-container>
-      <el-aside width="200px">
-        <sidebar />
-      </el-aside>
-      <el-container>
-        <el-header>
-          <navbar />
-        </el-header>
-        <el-main>
-          <router-view>
-            <app-main />
-          </router-view>
-        </el-main>
-      </el-container>
-    </el-container>
+  <div class="layout-container">
+    <sidebar class="sidebar-container" />
+    <div class="right-container">
+      <navbar />
+      <app-main />
+    </div>
   </div>
 </template>
 
 <script>
-import { Sidebar,AppMain,Navbar } from './components/index.js'
+import { Sidebar, AppMain, Navbar } from './components/index.js'
 export default {
   components: {
     Sidebar,
@@ -29,5 +19,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+.right-container {
+  min-height: 100%;
+  transition: margin-left 0.28s;
+  margin-left: 200px;
+  position: relative;
+}
+.sidebar-container {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  outline: 1px solid #dcdfe6;
+}
 </style>

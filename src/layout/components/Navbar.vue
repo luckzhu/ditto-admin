@@ -1,11 +1,31 @@
 <template>
-  <div>
-    <el-button @click="onLogout">logout</el-button>
+  <div class="navbar-container">
+    <div class="right-menu">
+      <!-- <p class="name">{{name}}</p> -->
+      <img :src="avatar" class="avatar" alt />
+
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>个人信息</el-dropdown-item>
+          <el-dropdown-item>GitHub</el-dropdown-item>
+          <el-dropdown-item>
+            <span @click="onLogout">退出登录</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+  computed: {
+    ...mapGetters(['name', 'avatar'])
+  },
   methods: {
     onLogout() {
       this.$store.dispatch('user/logout').then(() => {
@@ -17,4 +37,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar-container {
+  height: 64px;
+  padding: 0 20px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid #dcdfe6;
+}
+.right-menu {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+}
+</style>
+
+<style lang="scss">
+.el-dropdown-menu__item {
+  font-size: 13px;
+  padding: 0 16px;
+}
 </style>

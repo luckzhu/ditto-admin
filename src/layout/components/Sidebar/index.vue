@@ -10,7 +10,7 @@
     >
       <sidebar-item v-for="route in router" :key="route.path" :item="route"></sidebar-item>
     </el-menu>
-    <div class="line"></div>
+ 
   </div>
 </template>
 
@@ -34,8 +34,7 @@ export default {
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
-    }
+    handleSelect(key, keyPath) {}
   }
 }
 </script>
@@ -43,6 +42,11 @@ export default {
 <style lang="scss"  >
 .sidebar {
   text-align: left;
+  .el-menu {
+    border: none;
+    height: 100%;
+    width: 100% !important;
+  }
 }
 .sidebar .el-menu .svg-icon {
   margin-right: 10px;
