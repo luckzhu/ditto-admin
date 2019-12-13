@@ -74,8 +74,19 @@ export const asyncRoutes = [
   }
 ];
 
-const router = new VueRouter({
-  routes: constantRoutes
-});
+const createRouter = () =>
+  new VueRouter({
+    routes: constantRoutes
+  });
+
+const router = createRouter();
+
+//当切换用户登录时，需要重置上一次动态加载的路由。用户logout时调用即可
+export function resetRouter(routes) {
+  console.log(router);
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher;
+  console.log(router);
+}
 
 export default router;

@@ -1,6 +1,7 @@
 import { login, getInfo, logout } from "../../api/user";
 import { getToken, setToken, removeToken } from "../../utils/auth";
 import { Message } from "element-ui";
+import { resetRouter } from "../../router";
 
 const state = {
   token: getToken(),
@@ -69,6 +70,7 @@ const actions = {
           commit("SET_ROLES", []);
           commit("SET_TOKEN", "");
           removeToken();
+          resetRouter();
           resolve(response);
         })
         .catch(error => {
