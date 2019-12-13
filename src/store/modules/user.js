@@ -44,7 +44,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(token)
         .then(response => {
-          const { data } = response.data;
+          const { data } = response;
           if (!data) {
             reject("获取用户信息失败，请重新登录！");
           }

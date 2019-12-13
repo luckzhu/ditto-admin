@@ -3,6 +3,7 @@ import store from "./store";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { getToken } from "./utils/auth";
+import { Message } from "element-ui";
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
@@ -15,7 +16,7 @@ router.beforeEach(async (to, from, next) => {
 
   if (hasToken) {
     console.log({ hasToken });
-    if ((to.path = "/login")) {
+    if (to.path === "/login") {
       next("/");
       NProgress.done();
     } else {
@@ -25,8 +26,8 @@ router.beforeEach(async (to, from, next) => {
         next();
       } else {
         try {
-          const roles = store.dispatch("user/getInfo", hasToken);
-          const accessRoutes = store.dispatch("permission/generateRoutes", roles);
+          const { roles } = await store.dispatch("user/getInfo", hasToken);
+          const accessRoutes = await store.dispatch("permission/generateRoutes", roles);
           router.addRoutes(accessRoutes);
           next({ ...to, replace: true });
         } catch (error) {
