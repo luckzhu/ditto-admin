@@ -4,6 +4,7 @@
       <svg-icon :icon-name="triggerIconName" icon-class="trigger-icon" />
     </div>
     <div class="right-menu">
+      <header-search />
       <!-- <p class="name">{{name}}</p> -->
       <img :src="avatar" class="avatar" alt />
 
@@ -24,8 +25,12 @@
 </template>
 
 <script>
+import HeaderSearch from '@/components/HeaderSearch'
 import { mapGetters } from 'vuex'
 export default {
+  components: {
+    HeaderSearch
+  },
   computed: {
     ...mapGetters(['name', 'avatar', 'sidebar']),
     triggerIconName() {
